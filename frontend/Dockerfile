@@ -1,8 +1,9 @@
-FROM nginx:latest
+FROM alpine:latest
 
-COPY ./dist /usr/share/nginx/html
-COPY ./nginx.conf /etc/nginx/conf.d/app.conf
+WORKDIR /app/dist
+COPY ./dist /app/dist
+COPY Caddyfile /app/Caddyfile
 
-EXPOSE 80
+RUN apk add --update caddy
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["caddy", "run", "--config", "/app/Caddyfile", "--adapter", "caddyfile"]
