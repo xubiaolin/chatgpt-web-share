@@ -8,7 +8,7 @@
             style="text-decoration: none; color: inherit"
           >{{ $t('commons.siteTitle') }}</a>
         </div>
-        <div class="hidden sm:block">
+        <!-- <div class="hidden sm:block">
           <a
             class="h-full inline-block flex"
             href="https://github.com/moeakwak/chatgpt-web-share"
@@ -19,7 +19,7 @@
               :component="LogoGithub"
             />
           </a>
-        </div>
+        </div> -->
         <n-tag
           :bordered="false"
           type="success"

@@ -2,8 +2,11 @@ version: "3"
 
 services:
   chatgpt-web-share:
-    image: ghcr.io/moeakwak/chatgpt-web-share:latest
+    # image: ghcr.io/moeakwak/chatgpt-web-share:latest
     container_name: chatgpt-web-share
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
     restart: unless-stopped
     # network_mode: bridge
     ports:
