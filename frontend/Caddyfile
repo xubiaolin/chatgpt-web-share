@@ -1,6 +1,6 @@
 :80 {
 	handle_path /api/* {
-		reverse_proxy go-chatgpt-api:8080
+		reverse_proxy go-chatgpt-api:8000
 	}
 	handle /* {
 		file_server
