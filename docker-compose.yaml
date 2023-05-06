@@ -5,7 +5,7 @@ services:
     # image: ghcr.io/moeakwak/chatgpt-web-share:latest
     container_name: chatgpt-web-share
     build:
-      context: ./frontend
+      context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     # network_mode: bridge
@@ -17,15 +17,15 @@ services:
       - ./deploy/logs:/app/logs
     environment:
       - TZ=Asia/Shanghai
-      - CHATGPT_BASE_URL=http://go-chatgpt-api:8080
+      - CHATGPT_BASE_URL=http://go-chatgpt-api:8080/chatgpt
     depends_on:
       - go-chatgpt-api
 
   go-chatgpt-api:
     container_name: go-chatgpt-api
     image: linweiyuan/go-chatgpt-api
-    # ports:
-    # - 8080:8080 # 如果你需要暴露端口如一带多，可以取消注释
+    ports:
+    - 6060:8080 # 如果你需要暴露端口如一带多，可以取消注释
     environment:
       - GIN_MODE=release
       - CHATGPT_PROXY_SERVER=http://chatgpt-proxy-server:9515
