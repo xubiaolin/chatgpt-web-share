@@ -10,14 +10,14 @@ services:
     restart: unless-stopped
     # network_mode: bridge
     ports:
-      - 8080:80
+      - 8088:80
     volumes:
       - ./deploy/data:/data
       - ./deploy/config.yaml:/app/backend/api/config/config.yaml
       - ./deploy/logs:/app/logs
     environment:
       - TZ=Asia/Shanghai
-      - CHATGPT_BASE_URL=http://go-chatgpt-api:8080/chatgpt
+      - CHATGPT_BASE_URL=http://go-chatgpt-api:8080/chatgpt/
     depends_on:
       - go-chatgpt-api
 
